@@ -18,15 +18,17 @@ public class Rent
         DaysRented = daysRented;
         Status = RentStatus.Confirmed;
         Vehicle.IsRented = true;
-        if (typeof(PhysicalPerson).IsInstanceOfType(person))
-        {
-            Price = Vehicle.PricePerDay * DaysRented;
-        }
-        else
-        {
-            Price = Vehicle.PricePerDay * DaysRented;
-            Price -= Price * 0.1;
-        }
+        // if (typeof(PhysicalPerson).IsInstanceOfType(person))
+        // {
+        //     Price = Vehicle.PricePerDay * DaysRented;
+        // }
+        // else
+        // {
+        //     Price = Vehicle.PricePerDay * DaysRented;
+        //     Price -= Price * 0.1;
+        // }
+        double totalPrice = Vehicle.PricePerDay * DaysRented;
+        Price = typeof(PhysicalPerson).IsInstanceOfType(person) ? totalPrice : totalPrice - totalPrice * 0.1;
         Person.Debit = Price;
     }
 
