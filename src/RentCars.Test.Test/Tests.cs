@@ -291,8 +291,9 @@ public class TestReq06
             Assert.True(property.CanRead);
             Assert.True(property.CanWrite);
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            Console.WriteLine(e);
             Assert.True(false, "A propriedade Doors não foi encontrada");
         }
     }
